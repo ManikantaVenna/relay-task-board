@@ -3,6 +3,7 @@ import {
   Activity as ActivityIcon,
   AlertCircle,
   Check,
+  Circle,
   LoaderCircle,
   MessageSquare,
   Send,
