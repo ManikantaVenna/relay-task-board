@@ -125,6 +125,7 @@ export function TaskCardContent({
   const due = dueInfo(task);
   return (
     <div
+      aria-hidden={overlay || undefined}
       className={
         overlay ? "task-card card-content overlay-card" : "card-content"
       }
