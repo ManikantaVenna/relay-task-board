@@ -42,7 +42,8 @@ A guest session persists in browser storage and refreshes through Supabase Auth.
 ## Structure
 
 ```text
-src/App.tsx            Board, cards, task details, comments and interaction state
+src/App.tsx            Workspace layout, board state and mutations
+src/components/       Task cards, columns, details, comments and shared controls
 src/data.ts           Supabase repository and separately labeled local preview
 src/domain.ts         Validation, filtering and calendar-date logic
 src/styles.css        Responsive layout and visual system
