@@ -1,5 +1,6 @@
 name: Build and test
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -17,3 +18,24 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+        env:
+          DEPLOY_BASE_PATH: /relay-task-board/
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      - uses: actions/upload-pages-artifact@v5.0.0
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v5.0.1
+        id: deployment

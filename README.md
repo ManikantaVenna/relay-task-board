@@ -18,6 +18,8 @@ VITE_SUPABASE_PUBLISHABLE_KEY=your-public-publishable-key
 
 For a production bundle, run `npm run build`. Deploy `dist/` to a static host. Set the same two public environment variables before building. The project requires no custom API server.
 
+The included GitHub Actions workflow tests, builds and deploys the main branch to GitHub Pages. Set repository variables `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`, then enable Pages with GitHub Actions as its source. `DEPLOY_BASE_PATH` sets the repository subpath for production builds; local development uses `/`.
+
 Without configuration, the app shows setup instructions and an explicitly labeled browser-local preview. The normal configured app always uses Supabase. Preview data never claims to be database-backed.
 
 ## What works

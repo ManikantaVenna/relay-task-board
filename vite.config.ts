@@ -1,3 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-export default defineConfig({ plugins: [react()] });
+import { env } from "node:process";
+export default defineConfig({
+  plugins: [react()],
+  base: env.DEPLOY_BASE_PATH || "/",
+});
